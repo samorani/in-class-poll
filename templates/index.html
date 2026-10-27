@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Practice Quiz{% endblock %}
+{% block head %}
+<style>
+  .hero { text-align: center; padding: 30px 0 34px; }
+  .hero h1 { font-size: 2.6rem; }
+  .hero p { color: var(--ink-2); max-width: 540px; margin: 8px auto 0; font-size: 1.05rem; }
+  .split { display: grid; gap: 20px; grid-template-columns: 1fr 1fr; }
+  @media (max-width: 720px) { .split { grid-template-columns: 1fr; } .hero h1 { font-size: 2rem; } }
+  .split .card { display: flex; flex-direction: column; gap: 12px; }
+  .split .card p { margin: 0; color: var(--ink-2); flex: 1; }
+  .code-input { font-family: var(--mono); font-size: 1.4rem; letter-spacing: .25em; text-transform: uppercase;
+                text-align: center; }
+  .join { display: flex; gap: 10px; }
+  .join input { flex: 1; }
+  .err { color: var(--warn); background: var(--warn-soft); padding: 8px 12px; border-radius: 8px; margin: 0; }
+</style>
+{% endblock %}
+{% block body %}
+<section class="hero">
+  <div class="eyebrow">The AI-Assisted Software Builder's Manual</div>
+  <h1>Practice problems, live in class</h1>
+  <p>{{ n }} problems from chapters {{ chapters[0][0] }}–{{ chapters[-1][0] }}. The instructor draws one at random,
+     everyone answers on their phone, and the room sees the results together.</p>
+</section>
+
+<div class="split">
+  <div class="card">
+    <div class="eyebrow">Instructor</div>
+    <h2>Start a session</h2>
+    <p>You get a private host page and a link to share. Draw questions, reveal the responses, show the solution.</p>
+    <form method="post" action="{{ url_for('start') }}">
+      <button class="primary lg" type="submit">Start a session →</button>
+    </form>
+  </div>
+  <div class="card">
+    <div class="eyebrow">Student</div>
+    <h2>Join with a code</h2>
+    <p>Type the five-character code your instructor is showing, or open the link they shared.</p>
+    {% if error %}<p class="err">{{ error }}</p>{% endif %}
+    <form method="post" action="{{ url_for('join') }}" class="join">
+      <input class="code-input" type="text" name="code" placeholder="A1B2C" maxlength="5" autocomplete="off"
+             autocapitalize="characters" spellcheck="false" required>
+      <button class="lg" type="submit">Join</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

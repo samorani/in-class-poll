@@ -1,0 +1,2113 @@
+[
+  {
+    "id": "2.MC4",
+    "chapter": 2,
+    "chapter_title": "Working in the Terminal",
+    "difficulty": "Easy",
+    "type": "MC",
+    "text": "Which command lists a folder’s contents including names that begin with a dot?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "ls"
+      },
+      {
+        "letter": "b",
+        "text": "ls -l"
+      },
+      {
+        "letter": "c",
+        "text": "ls -a"
+      },
+      {
+        "letter": "d",
+        "text": "ls ."
+      }
+    ],
+    "answer": "(c). Section 2.2.",
+    "correct": "c"
+  },
+  {
+    "id": "2.SA3",
+    "chapter": 2,
+    "chapter_title": "Working in the Terminal",
+    "difficulty": "Easy",
+    "type": "SA",
+    "text": "What does cd do when typed with nothing after it?",
+    "answer": "Returns you to your home folder. Section 2.2."
+  },
+  {
+    "id": "2.SA4",
+    "chapter": 2,
+    "chapter_title": "Working in the Terminal",
+    "difficulty": "Easy",
+    "type": "SA",
+    "text": "Which key combination stops a program that is keeping the terminal busy, and is it Control or Cmd on a Mac?",
+    "answer": "Control+C, and it is Control even on a Mac. Section 2.6."
+  },
+  {
+    "id": "2.MC7",
+    "chapter": 2,
+    "chapter_title": "Working in the Terminal",
+    "difficulty": "Medium",
+    "type": "MC",
+    "text": "Which of these paths refers to the same file no matter which folder the terminal is in?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "practice/notes.txt"
+      },
+      {
+        "letter": "b",
+        "text": "../notes.txt"
+      },
+      {
+        "letter": "c",
+        "text": "~/practice/notes.txt"
+      },
+      {
+        "letter": "d",
+        "text": "./notes.txt"
+      }
+    ],
+    "answer": "(c). Paths beginning with / or ~ are absolute; the others are relative to the current folder. Section 2.2.",
+    "correct": "c"
+  },
+  {
+    "id": "2.SA1",
+    "chapter": 2,
+    "chapter_title": "Working in the Terminal",
+    "difficulty": "Medium",
+    "type": "SA",
+    "text": "In an empty folder you type mkdir my notes. What does ls show, and why?",
+    "answer": "Two folders, my and notes. The space separates arguments, so mkdir received two names. Section 2.2."
+  },
+  {
+    "id": "2.SA2",
+    "chapter": 2,
+    "chapter_title": "Working in the Terminal",
+    "difficulty": "Medium",
+    "type": "SA",
+    "text": "rm my_notes prints rm: my_notes: is a directory. Why did it refuse, and which command deletes the folder?",
+    "answer": "Without -r, rm deletes only files. rm -r my_notes deletes the folder and everything in it. Section 2.4."
+  },
+  {
+    "id": "2.SA5",
+    "chapter": 2,
+    "chapter_title": "Working in the Terminal",
+    "difficulty": "Medium",
+    "type": "SA",
+    "text": "notes.txt and week3.txt both exist. You run mv notes.txt week3.txt. What happens to the old week3.txt, and does the terminal warn you?",
+    "answer": "It is overwritten by the contents of notes.txt, without any warning. Section 2.4."
+  },
+  {
+    "id": "2.SA6",
+    "chapter": 2,
+    "chapter_title": "Working in the Terminal",
+    "difficulty": "Medium",
+    "type": "SA",
+    "text": "You run echo \"a\" > x.txt, then echo \"b\" > x.txt, then echo \"c\" >> x.txt. What does cat x.txt print?",
+    "answer": "Two lines: b then c. The second > replaced a; >> appended. Section 2.3."
+  },
+  {
+    "id": "2.SA7",
+    "chapter": 2,
+    "chapter_title": "Working in the Terminal",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "A folder contains a.txt, b.txt, and a folder named old. A classmate types rm *. What is deleted, what remains, and what does the terminal say?",
+    "answer": "a.txt and b.txt are deleted; old remains, and the terminal prints rm: old: is a directory. Sections 2.4, 2.5."
+  },
+  {
+    "id": "2.SA8",
+    "chapter": 2,
+    "chapter_title": "Working in the Terminal",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "ls -l prints -rw-r--r-- 1 student staff 0 Oct 11 09:02 week4.txt. A classmate says this week’s notes are in that file. What in the line suggests otherwise, and which command settles it?",
+    "answer": "The size is 0 bytes: the file is empty. cat week4.txt settles it. Sections 2.2, 2.3."
+  },
+  {
+    "id": "2.SA10",
+    "chapter": 2,
+    "chapter_title": "Working in the Terminal",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "mkdir reports in your home folder prints nothing. You type it again and get mkdir: reports: File exists. Did the second command change anything? What does the first command’s silence mean?",
+    "answer": "No: a command that fails changes nothing. The silence of the first means it succeeded; commands that succeed are usually silent. Section 2.2."
+  },
+  {
+    "id": "2.SA11",
+    "chapter": 2,
+    "chapter_title": "Working in the Terminal",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "A folder contains three files of notes: week1.txt, week2.txt, and week3.txt. A classmate runs these three commands in order: mkdir archive cp *.txt archive rm *.txt Then the classmate says: “My notes are gone forever. rm has no Trash.” Is the classmate right? Say what each command did.",
+    "answer": "No. mkdir created a folder archive; cp copied the three files into it; rm deleted the three originals, permanently. The copies in archive are untouched, so the notes are not gone. Sections 2.4, 2.5."
+  },
+  {
+    "id": "2.SA12",
+    "chapter": 2,
+    "chapter_title": "Working in the Terminal",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "ls -l in practice shows a line beginning with d whose name is notes.txt. A classmate runs cat notes.txt expecting three lines of notes. What happens, and why?",
+    "answer": "cat cannot print it: the leading d means notes.txt is a folder, not a file. Sections 2.2, 2.3."
+  },
+  {
+    "id": "2.SA13",
+    "chapter": 2,
+    "chapter_title": "Working in the Terminal",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "A teammate’s rule: “Every Friday, run rm *.log in the shared folder.” Name the one command to run immediately before any rm with a wildcard, and say what it protects you from.",
+    "answer": "ls *.log, with the same pattern. It shows exactly which files the wildcard matches before they are deleted for good. Section 2.5."
+  },
+  {
+    "id": "3.MC3",
+    "chapter": 3,
+    "chapter_title": "Building Your First Web App",
+    "difficulty": "Easy",
+    "type": "MC",
+    "text": "A single file index.html contains three kinds of text: HTML, CSS, and JavaScript. Which of the three is the programming language, the one that says what happens when the user clicks a square?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "HTML"
+      },
+      {
+        "letter": "b",
+        "text": "CSS"
+      },
+      {
+        "letter": "c",
+        "text": "JavaScript"
+      },
+      {
+        "letter": "d",
+        "text": "Python"
+      }
+    ],
+    "answer": "(c). HTML is the structure of the page and CSS its appearance; neither one describes what happens when the user acts. Chapter introduction.",
+    "correct": "c"
+  },
+  {
+    "id": "3.MC5",
+    "chapter": 3,
+    "chapter_title": "Building Your First Web App",
+    "difficulty": "Easy",
+    "type": "MC",
+    "text": "An application that is just an HTML file (with its CSS and JavaScript inside) and needs no server is also called a:",
+    "options": [
+      {
+        "letter": "a",
+        "text": "web application"
+      },
+      {
+        "letter": "b",
+        "text": "static site"
+      },
+      {
+        "letter": "c",
+        "text": "server"
+      },
+      {
+        "letter": "d",
+        "text": "back end"
+      }
+    ],
+    "answer": "(b). Section 3.6.",
+    "correct": "b"
+  },
+  {
+    "id": "3.MC6",
+    "chapter": 3,
+    "chapter_title": "Building Your First Web App",
+    "difficulty": "Easy",
+    "type": "MC",
+    "text": "A new repository created on GitHub with the box Add a README file ticked starts with which file?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "index.html"
+      },
+      {
+        "letter": "b",
+        "text": "README.md"
+      },
+      {
+        "letter": "c",
+        "text": "app.py"
+      },
+      {
+        "letter": "d",
+        "text": ".gitignore"
+      }
+    ],
+    "answer": "(b). Section 3.1.",
+    "correct": "b"
+  },
+  {
+    "id": "3.SA3",
+    "chapter": 3,
+    "chapter_title": "Building Your First Web App",
+    "difficulty": "Easy",
+    "type": "SA",
+    "text": "An application is a single HTML file, with its CSS and JavaScript inside, and no server. Name the things such an application cannot do.",
+    "answer": "It cannot pass information from one visitor to another (every copy of the page is isolated); it cannot keep anything secret from the visitor (the whole program is on the visitor’s computer); and it cannot use any information it did not bring with it (another visitor’s data, a list of sign-ups, today’s weather). Accept any wording that names these. Section 3.6."
+  },
+  {
+    "id": "3.MC7",
+    "chapter": 3,
+    "chapter_title": "Building Your First Web App",
+    "difficulty": "Medium",
+    "type": "MC",
+    "text": "A tic-tac-toe game is a single file index.html, opened directly from the disk with no server. It keeps a tally of wins in a JavaScript variable inside the page. The tally shows X with 2 wins. You open the same file in a second tab. What does the second tab’s tally show?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "2"
+      },
+      {
+        "letter": "b",
+        "text": "0"
+      },
+      {
+        "letter": "c",
+        "text": "1"
+      },
+      {
+        "letter": "d",
+        "text": "it asks which tally to use"
+      }
+    ],
+    "answer": "(b). Each tab runs its own copy of the program with its own tally, starting from zero. Section 3.5.",
+    "correct": "b"
+  },
+  {
+    "id": "3.SA5",
+    "chapter": 3,
+    "chapter_title": "Building Your First Web App",
+    "difficulty": "Medium",
+    "type": "SA",
+    "text": "Roommates want a shopping list where anyone adds an item from their phone and everyone sees the list. Can it be a single HTML file with JavaScript, or does it need a server (a back end)? Why?",
+    "answer": "It needs a back end: items added by one visitor must reach the others, and a page running alone in a browser cannot pass information between visitors. Section 3.6."
+  },
+  {
+    "id": "3.MC8",
+    "chapter": 3,
+    "chapter_title": "Building Your First Web App",
+    "difficulty": "Hard",
+    "type": "MC",
+    "text": "A practice quiz is a single file index.html with no server. The student picks answers and the page immediately marks each one right or wrong. An instructor wants to use the same page for a quiz that counts for 5% of the grade. Why is that unsafe?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "the page cannot compute a score"
+      },
+      {
+        "letter": "b",
+        "text": "the correct answers are in the page source, where any student can read them"
+      },
+      {
+        "letter": "c",
+        "text": "a one-file page cannot run without internet"
+      },
+      {
+        "letter": "d",
+        "text": "JavaScript cannot do arithmetic reliably"
+      }
+    ],
+    "answer": "(b). To mark the answers, the page must contain them; a page running alone in a browser cannot hide anything from the visitor. Sections 3.4, 3.6.",
+    "correct": "b"
+  },
+  {
+    "id": "3.SA6",
+    "chapter": 3,
+    "chapter_title": "Building Your First Web App",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "A tic-tac-toe game is a single file index.html opened from the disk, with no server. It keeps its tally in the line const score = { X: 0, O: 0, D: 0 };. A teammate edits that line to const score = { X: 0, O: 3, D: 0 };, saves, reloads the game, and plays in that tab until O wins once. What does that tab show for O? What does a second tab opened now show for O?",
+    "answer": "4 in the first tab; 3 in the second. Each tab starts from the file’s line and keeps its own count. Section 3.5."
+  },
+  {
+    "id": "3.SA7",
+    "chapter": 3,
+    "chapter_title": "Building Your First Web App",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "A vendor offers a club sign-up sheet built as a single HTML page with JavaScript, no server, for $200, “nothing to pay each month.” Before answering, what is the one question to ask, and why?",
+    "answer": "Where do the sign-ups go (who sees the list)? A sign-up sheet must pass information from one visitor to the others, and a page running alone in a browser cannot. Section 3.6."
+  },
+  {
+    "id": "3.SA8",
+    "chapter": 3,
+    "chapter_title": "Building Your First Web App",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "A drawing pad lets you sketch with the mouse and download the drawing as an image. Does it need a server (a back end)? Now add “and the drawing appears in a gallery everyone can browse.” Does it need one now, and why?",
+    "answer": "No: nothing passes between visitors, nothing is hidden, nothing is fetched. Yes, once the gallery is added: drawings from one visitor must reach the others. Section 3.6."
+  },
+  {
+    "id": "3.SA9",
+    "chapter": 3,
+    "chapter_title": "Building Your First Web App",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "You ask an AI assistant to write a tic-tac-toe page. Its reply ends: “I haven’t opened it in a browser or run it, so it’s untested” and “I added the draws counter, which you didn’t ask for.” Name the two things in that reply that deserve attention, and say whose job checking is.",
+    "answer": "It has not tested the game, and it added a feature nobody requested. Checking is your job, not the assistant’s. Section 3.2."
+  },
+  {
+    "id": "3.SA10",
+    "chapter": 3,
+    "chapter_title": "Building Your First Web App",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "A tournament organizer collects screenshots of each player’s tally by email every evening and updates a standings page by hand. A teammate says “so no back end is needed.” What is doing the sharing in this plan, and what does an application that must share between visitors need?",
+    "answer": "The organizer and email are doing the sharing by hand. An application that needs to pass information between visitors needs a back end; the plan has simply replaced it with a person. Section 3.6."
+  },
+  {
+    "id": "3.MC9",
+    "chapter": 3,
+    "chapter_title": "Building Your First Web App",
+    "difficulty": "Extra hard",
+    "type": "MC",
+    "text": "Which of these facts about a web page can you establish from View page source alone?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "how many people have visited it"
+      },
+      {
+        "letter": "b",
+        "text": "whether a password it checks is visible to the visitor"
+      },
+      {
+        "letter": "c",
+        "text": "what the weather is"
+      },
+      {
+        "letter": "d",
+        "text": "how many wins are in another visitor’s tally"
+      }
+    ],
+    "answer": "(b). The source is the entire program the browser received; whatever the page checks is in it. Section 3.4.",
+    "correct": "b"
+  },
+  {
+    "id": "4.MC4",
+    "chapter": 4,
+    "chapter_title": "Tracking Changes with Git",
+    "difficulty": "Easy",
+    "type": "MC",
+    "text": "In Git, origin is:",
+    "options": [
+      {
+        "letter": "a",
+        "text": "the first commit"
+      },
+      {
+        "letter": "b",
+        "text": "the nickname for the copy of the repository on GitHub"
+      },
+      {
+        "letter": "c",
+        "text": "the staging area"
+      },
+      {
+        "letter": "d",
+        "text": "the main branch"
+      }
+    ],
+    "answer": "(b). It is the place the project was cloned from. Section 4.1.",
+    "correct": "b"
+  },
+  {
+    "id": "4.MC5",
+    "chapter": 4,
+    "chapter_title": "Tracking Changes with Git",
+    "difficulty": "Easy",
+    "type": "MC",
+    "text": "You run git config --global user.name \"Ana\" and nothing is printed. What happened?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "it failed silently"
+      },
+      {
+        "letter": "b",
+        "text": "it succeeded; git config prints nothing on success"
+      },
+      {
+        "letter": "c",
+        "text": "it is waiting for the email address"
+      },
+      {
+        "letter": "d",
+        "text": "it needs to be run inside a repository"
+      }
+    ],
+    "answer": "(b). Section 4.3.",
+    "correct": "b"
+  },
+  {
+    "id": "4.SA1",
+    "chapter": 4,
+    "chapter_title": "Tracking Changes with Git",
+    "difficulty": "Easy",
+    "type": "SA",
+    "text": "Name, in order, the four places a change passes through on its way from your editor to GitHub, and the command that moves it from each place to the next.",
+    "answer": "Working folder →git add →staging area →git commit →local repository →git push →GitHub. Section 4.1."
+  },
+  {
+    "id": "4.SA3",
+    "chapter": 4,
+    "chapter_title": "Tracking Changes with Git",
+    "difficulty": "Easy",
+    "type": "SA",
+    "text": "Where on your laptop does Git keep the local repository, and should you open it yourself?",
+    "answer": "In the hidden folder .git inside the working folder. No; only Git writes to it. Section 4.1."
+  },
+  {
+    "id": "4.MC6",
+    "chapter": 4,
+    "chapter_title": "Tracking Changes with Git",
+    "difficulty": "Medium",
+    "type": "MC",
+    "text": "git commit -am \"message\" silently skips which kind of file?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "files larger than 1 MB"
+      },
+      {
+        "letter": "b",
+        "text": "files changed by the AI assistant"
+      },
+      {
+        "letter": "c",
+        "text": "files that have never been in a commit"
+      },
+      {
+        "letter": "d",
+        "text": "files listed in .gitignore"
+      }
+    ],
+    "answer": "(c). -am stages only tracked files; a new file needs git add first. (Ignored files are also skipped, but that is .gitignore’s doing, not -am’s.) Section 4.2.",
+    "correct": "c"
+  },
+  {
+    "id": "4.MC7",
+    "chapter": 4,
+    "chapter_title": "Tracking Changes with Git",
+    "difficulty": "Medium",
+    "type": "MC",
+    "text": "A commit has been pushed to GitHub and you want its change undone. Which command should you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "git reset --hard HEAD~1"
+      },
+      {
+        "letter": "b",
+        "text": "git restore index.html"
+      },
+      {
+        "letter": "c",
+        "text": "git revert --no-edit HEAD"
+      },
+      {
+        "letter": "d",
+        "text": "git rm"
+      }
+    ],
+    "answer": "(c). It adds a new commit that reverses the change; nothing is erased, and the history on GitHub stays consistent with yours. Section 4.8.",
+    "correct": "c"
+  },
+  {
+    "id": "4.SA4",
+    "chapter": 4,
+    "chapter_title": "Tracking Changes with Git",
+    "difficulty": "Medium",
+    "type": "SA",
+    "text": "git status says Your branch is ahead of 'origin/main' by 2 commits. Where are those two commits, and where are they not?",
+    "answer": "In the local repository on your laptop (and reflected in the working folder); not on GitHub. git push sends them. Section 4.4."
+  },
+  {
+    "id": "4.SA5",
+    "chapter": 4,
+    "chapter_title": "Tracking Changes with Git",
+    "difficulty": "Medium",
+    "type": "SA",
+    "text": "What does git restore index.html do, and where does the restored content come from?",
+    "answer": "It copies index.html from the most recent commit back into the working folder, discarding every change to the file since that commit. Section 4.7."
+  },
+  {
+    "id": "4.MC8",
+    "chapter": 4,
+    "chapter_title": "Tracking Changes with Git",
+    "difficulty": "Hard",
+    "type": "MC",
+    "text": "A teammate’s AI assistant runs git reset --hard HEAD~1 to undo a commit that had already been pushed. What happens at the next git push?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "nothing unusual"
+      },
+      {
+        "letter": "b",
+        "text": "the push is refused, because the laptop’s history and GitHub’s no longer agree"
+      },
+      {
+        "letter": "c",
+        "text": "GitHub deletes the commit too"
+      },
+      {
+        "letter": "d",
+        "text": "Git performs a revert automatically"
+      }
+    ],
+    "answer": "(b). This is why reset should not be used on pushed commits; revert is the safe tool. Section 4.8.",
+    "correct": "b"
+  },
+  {
+    "id": "4.SA7",
+    "chapter": 4,
+    "chapter_title": "Tracking Changes with Git",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "Three files have changed: index.html (a fix), README.md (a typo), and notes.txt (your notes). You want a commit containing only the fix. Which two commands, and why is git commit -am the wrong tool here?",
+    "answer": "git add index.html, then git commit -m \"…\". -am stages every tracked file that changed, so the typo fix would come along. Section 4.2."
+  },
+  {
+    "id": "4.SA8",
+    "chapter": 4,
+    "chapter_title": "Tracking Changes with Git",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "A commit prints [main 8f37e64] Fix the board and 1 file changed, 1 insertion(+), 1 deletion(-). What is 8f37e64, and where has the change just reached?",
+    "answer": "The commit’s seven-character code, which identifies this version. The local repository on your laptop; GitHub does not have it yet. Section 4.4."
+  },
+  {
+    "id": "4.SA9",
+    "chapter": 4,
+    "chapter_title": "Tracking Changes with Git",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "A teammate runs echo \"\" > index.html, then git commit -am \"oops\", then pushes. Can git restore index.html bring the game back? What can?",
+    "answer": "No: restore reaches only the most recent commit, which now holds the empty file. git revert --no-edit HEAD adds a commit that puts the previous contents back. Sections 4.7, 4.8."
+  },
+  {
+    "id": "4.SA10",
+    "chapter": 4,
+    "chapter_title": "Tracking Changes with Git",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "A teammate never commits .gitignore, calling it “a personal setting”. A classmate clones the project and runs a program that writes debug.log. What does the classmate’s git status show, and what is the risk?",
+    "answer": "debug.log under Untracked files: nothing tells their Git to ignore it. They may git add . and commit it. .gitignore is committed precisely so that everyone ignores the same files. Section 4.9."
+  },
+  {
+    "id": "4.SA11",
+    "chapter": 4,
+    "chapter_title": "Tracking Changes with Git",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "You commit at 11 p.m. and your laptop dies before you push. Where was the commit, and can it be recovered from GitHub?",
+    "answer": "Only in the local repository (and the working folder) on the dead laptop. No: GitHub has only the commits that were pushed. Sections 4.1, 4.5."
+  },
+  {
+    "id": "4.SA12",
+    "chapter": 4,
+    "chapter_title": "Tracking Changes with Git",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "You run git restore index.html and the next git status says modified: README.md. Did the restore fail?",
+    "answer": "No. restore acts on the one file named; README.md was already modified and is untouched. Section 4.7."
+  },
+  {
+    "id": "5.MC1",
+    "chapter": 5,
+    "chapter_title": "Working with an AI Coding Assistant",
+    "difficulty": "Easy",
+    "type": "MC",
+    "text": "A good prompt to an AI coding assistant states a few things so that the result can be checked. Which of these does not belong in a prompt?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "the stack (the languages and tools to use)"
+      },
+      {
+        "letter": "b",
+        "text": "one feature"
+      },
+      {
+        "letter": "c",
+        "text": "where the files go"
+      },
+      {
+        "letter": "d",
+        "text": "how long the code should be"
+      }
+    ],
+    "answer": "(d). A prompt states the stack, one feature, where the files go, and that you want complete files. Section 5.2.",
+    "correct": "d"
+  },
+  {
+    "id": "5.MC3",
+    "chapter": 5,
+    "chapter_title": "Working with an AI Coding Assistant",
+    "difficulty": "Easy",
+    "type": "MC",
+    "text": "AI coding assistants make some mistakes quietly, without saying so. Which of these is not one of them?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "it makes your decisions for you"
+      },
+      {
+        "letter": "b",
+        "text": "it adds what you did not ask for"
+      },
+      {
+        "letter": "c",
+        "text": "it leaves out what you did not mention"
+      },
+      {
+        "letter": "d",
+        "text": "it refuses to write code it cannot test"
+      }
+    ],
+    "answer": "(d). Assistants write untested code readily; the quiet mistake is that they describe untested work as finished. Section 5.1.",
+    "correct": "d"
+  },
+  {
+    "id": "5.MC4",
+    "chapter": 5,
+    "chapter_title": "Working with an AI Coding Assistant",
+    "difficulty": "Easy",
+    "type": "MC",
+    "text": "How long does an AI coding assistant remember what you told it, such as “nothing loaded from the internet”?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "forever, for this folder"
+      },
+      {
+        "letter": "b",
+        "text": "one conversation"
+      },
+      {
+        "letter": "c",
+        "text": "one day"
+      },
+      {
+        "letter": "d",
+        "text": "until the next commit"
+      }
+    ],
+    "answer": "(b). A new conversation knows only what is in the folder. Section 5.6.",
+    "correct": "b"
+  },
+  {
+    "id": "5.SA3",
+    "chapter": 5,
+    "chapter_title": "Working with an AI Coding Assistant",
+    "difficulty": "Easy",
+    "type": "SA",
+    "text": "Name three things you can check in any file an AI assistant writes, without being a programmer.",
+    "answer": "The files (which exist, with which names, where); the addresses (anything beginning with http); your own rules (the numbers and words from your prompt). Section 5.3."
+  },
+  {
+    "id": "5.SA4",
+    "chapter": 5,
+    "chapter_title": "Working with an AI Coding Assistant",
+    "difficulty": "Easy",
+    "type": "SA",
+    "text": "While working with an AI assistant, when should you commit, and how often?",
+    "answer": "Every time something works, before asking the assistant for anything else; a few times an hour. Section 5.6."
+  },
+  {
+    "id": "5.MC6",
+    "chapter": 5,
+    "chapter_title": "Working with an AI Coding Assistant",
+    "difficulty": "Medium",
+    "type": "MC",
+    "text": "In which of these situations should you answer the AI assistant with “no”, or at least “not yet, explain first”?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "the assistant adds a remove button you did not request"
+      },
+      {
+        "letter": "b",
+        "text": "the assistant wants to load a font from the internet"
+      },
+      {
+        "letter": "c",
+        "text": "the assistant asks which grading scale to use"
+      },
+      {
+        "letter": "d",
+        "text": "the assistant says the file is untested"
+      }
+    ],
+    "answer": "(b). Loading something from the internet is a decision about where your page connects, and it is yours to make. Section 5.5.",
+    "correct": "b"
+  },
+  {
+    "id": "5.MC7",
+    "chapter": 5,
+    "chapter_title": "Working with an AI Coding Assistant",
+    "difficulty": "Medium",
+    "type": "MC",
+    "text": "A feature works, but one line of it decides a behavior you care about and you cannot read it. What is the best thing to ask the assistant?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "“Explain the code.”"
+      },
+      {
+        "letter": "b",
+        "text": "“Quote the one line that decides this and explain it in plain English.”"
+      },
+      {
+        "letter": "c",
+        "text": "“Rewrite it so I can read it.”"
+      },
+      {
+        "letter": "d",
+        "text": "“Add comments to every line.”"
+      }
+    ],
+    "answer": "(b). One line, then compare the explanation with what you saw the page do. Section 5.4.",
+    "correct": "b"
+  },
+  {
+    "id": "5.SA5",
+    "chapter": 5,
+    "chapter_title": "Working with an AI Coding Assistant",
+    "difficulty": "Medium",
+    "type": "SA",
+    "text": "You asked for “a single file, index.html”. The page works, but VS Code shows index.html, style.css, and script.js. What has the assistant done, and how did you notice without reading any code?",
+    "answer": "It made a decision about the shape of your project that you did not ask for. You noticed by checking the files: which exist, with which names. Section 5.3."
+  },
+  {
+    "id": "5.SA6",
+    "chapter": 5,
+    "chapter_title": "Working with an AI Coding Assistant",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "You asked an AI assistant for a GPA calculator page. Before anything has been typed into it, the page shows GPA: 4.00. The assistant’s reply says “rows with zero or blank credits are skipped.” Looking at the page, it starts with several rows, and every row is pre-filled with grade A and 3 credits. Explain the 4.00, and say why the reply’s sentence is true and still unhelpful.",
+    "answer": "Every untouched row counts as an A with 3 credits, so the GPA is 4.00 before you type. The sentence is true, but no row is ever blank, so the rule it describes never applies. The assistant made a decision (pre-filled rows) that you did not ask for. Section 5.1."
+  },
+  {
+    "id": "5.SA7",
+    "chapter": 5,
+    "chapter_title": "Working with an AI Coding Assistant",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "A GPA page shows 3.38 for courses A/5 units, B+/4, C/2. You change the C row’s units to −2 and the page shows 3.69 with no message. Who decided that behavior, and whose decision should it have been?",
+    "answer": "The assistant: it silently drops the row. Whether the page should show an error instead is your decision, not the assistant’s; you never specified it. Section 5.4."
+  },
+  {
+    "id": "5.SA8",
+    "chapter": 5,
+    "chapter_title": "Working with an AI Coding Assistant",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "In a new conversation you ask the assistant to undo its restyling, and it answers: “I can’t restore the page, because there’s no earlier version of it to restore from.” What single thing, done earlier, would have made this a one-command fix, and what is the command?",
+    "answer": "A commit of the working version. git restore index.html. Section 5.6."
+  },
+  {
+    "id": "5.SA9",
+    "chapter": 5,
+    "chapter_title": "Working with an AI Coding Assistant",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "You ask the assistant to make a button send your GPA by email directly. It stops, explains that a page cannot send email by itself, and offers: “I can build the button now; the send step would be a placeholder endpoint that you fill in later.” You answer “sure, whatever’s simplest.” What do you now own?",
+    "answer": "A button built to send your grades to a destination nobody has chosen yet. The assistant raised the question; only you could say no. Section 5.5."
+  },
+  {
+    "id": "5.SA10",
+    "chapter": 5,
+    "chapter_title": "Working with an AI Coding Assistant",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "The assistant explains a line as “negative units are subtracted from the total.” Your test: with A/5 units, B+/4 and C/−2 (on a scale where A = 4.0, B+ = 3.3, C = 2.0), the page shows 3.69. Do the explanation and the experiment agree? What does that mean?",
+    "answer": "No. 3.69 = 33.2 / 9 is the A and B+ alone (the C row was dropped); subtracting would give 29.2 / 7 = 4.17. One of the two is wrong, and you have found something to fix. Section 5.4."
+  },
+  {
+    "id": "5.SA11",
+    "chapter": 5,
+    "chapter_title": "Working with an AI Coding Assistant",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "A treasurer has written twelve features into one careful, fully specified prompt: “one prompt, one page, one check.” What is wrong even though everything is specified?",
+    "answer": "Twelve features produce twelve times the code and one reply claiming all twelve work; you can check one feature in a minute and will check none of twelve properly. One feature per prompt, and a commit after each. Sections 5.2, 5.6."
+  },
+  {
+    "id": "5.SA12",
+    "chapter": 5,
+    "chapter_title": "Working with an AI Coding Assistant",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "You approved a change without reading the reply, whose last lines were: “I haven’t run this. I also replaced your scale with the standard one, since yours had no A+.” How would you confirm what happened in the file without reading code, and what are your two ways back?",
+    "answer": "Search the file for one of your scale’s values (such as 3.7) and compare with your prompt. git restore index.html if the working version was committed; otherwise ask the assistant to put your scale back and check it again. Sections 5.3, 5.6."
+  },
+  {
+    "id": "6.MC4",
+    "chapter": 6,
+    "chapter_title": "Branches and Collaboration with Git",
+    "difficulty": "Easy",
+    "type": "MC",
+    "text": "Which command deletes a branch whose work was never merged?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "git branch -d name"
+      },
+      {
+        "letter": "b",
+        "text": "git branch -D name"
+      },
+      {
+        "letter": "c",
+        "text": "git switch -d name"
+      },
+      {
+        "letter": "d",
+        "text": "git restore name"
+      }
+    ],
+    "answer": "(b). The capital -D is required so that unmerged work cannot be discarded by accident. Section 6.4.",
+    "correct": "b"
+  },
+  {
+    "id": "6.SA3",
+    "chapter": 6,
+    "chapter_title": "Branches and Collaboration with Git",
+    "difficulty": "Easy",
+    "type": "SA",
+    "text": "What does git pull do?",
+    "answer": "Fetches the commits on GitHub that your local repository does not have and adds them to your branch, updating the working folder. Section 6.5."
+  },
+  {
+    "id": "6.SA4",
+    "chapter": 6,
+    "chapter_title": "Branches and Collaboration with Git",
+    "difficulty": "Easy",
+    "type": "SA",
+    "text": "What is a fast-forward merge?",
+    "answer": "A merge where nobody committed to main while the branch was being worked on, so Git only moves main forward to the branch’s latest commit; no new commit is made. Section 6.3."
+  },
+  {
+    "id": "6.MC2",
+    "chapter": 6,
+    "chapter_title": "Branches and Collaboration with Git",
+    "difficulty": "Medium",
+    "type": "MC",
+    "text": "In git log --oneline, what does origin/main stand for?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "GitHub’s main as it is right now"
+      },
+      {
+        "letter": "b",
+        "text": "GitHub’s main as of your last pull or fetch"
+      },
+      {
+        "letter": "c",
+        "text": "the project’s first commit"
+      },
+      {
+        "letter": "d",
+        "text": "a backup of your local main"
+      }
+    ],
+    "answer": "(b). Section 6.5.",
+    "correct": "b"
+  },
+  {
+    "id": "6.SA6",
+    "chapter": 6,
+    "chapter_title": "Branches and Collaboration with Git",
+    "difficulty": "Medium",
+    "type": "SA",
+    "text": "A teammate suggests git merge main while you are on your feature branch, “so the branch gets the latest rules too.” Is that allowed, and what does it do?",
+    "answer": "Yes. You merge into the branch you are on, so main’s new commits are brought into the feature branch; main itself is unchanged. Section 6.3."
+  },
+  {
+    "id": "6.SA7",
+    "chapter": 6,
+    "chapter_title": "Branches and Collaboration with Git",
+    "difficulty": "Medium",
+    "type": "SA",
+    "text": "After deleting a merged branch with git branch -d, are its commits gone?",
+    "answer": "No. They remain as part of main; only the name is removed. Section 6.3."
+  },
+  {
+    "id": "6.SA1",
+    "chapter": 6,
+    "chapter_title": "Branches and Collaboration with Git",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "git pull stops with fatal: Need to specify how to reconcile divergent branches. and git status says have 1 and 1 different commits each. What happened, and was anything lost?",
+    "answer": "Each side has a commit the other lacks, and Git has not been told how to combine them (pull.rebase is not set). Nothing was lost. Section 6.6."
+  },
+  {
+    "id": "6.SA2",
+    "chapter": 6,
+    "chapter_title": "Branches and Collaboration with Git",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "A project’s git log --oneline --graph is a straight line with no fork. Does that prove the project never used a branch? Explain.",
+    "answer": "No. A branch merged while main had no new commits of its own is merged by moving main forward, and leaves no fork in the graph. Section 6.3."
+  },
+  {
+    "id": "6.SA8",
+    "chapter": 6,
+    "chapter_title": "Branches and Collaboration with Git",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "After a merge, the top line of the history reads 36ae86b (HEAD -> main, computerplayer) Computer can play O. A teammate worries the branch has “collapsed into main”. Why do two names appear on one commit, and what changes after git branch -d computer-player?",
+    "answer": "After a fast-forward, both branches point at the same commit. Only the label computerplayer disappears; the commit itself is unchanged. Section 6.3."
+  },
+  {
+    "id": "6.SA9",
+    "chapter": 6,
+    "chapter_title": "Branches and Collaboration with Git",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "A teammate says they pushed a new rule ten minutes ago. On your laptop git pull prints Already up to date. and the file has no new rule. Give two possible explanations.",
+    "answer": "They committed but never pushed; or they pushed to a different branch (or a different repository). Sections 6.5, 4.5."
+  },
+  {
+    "id": "6.MC7",
+    "chapter": 6,
+    "chapter_title": "Branches and Collaboration with Git",
+    "difficulty": "Hard",
+    "type": "MC",
+    "text": "On main, git status says Your branch is up to date with 'origin/main'. On a branch you created with git switch -c, that line is absent. Why?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "the branch is broken"
+      },
+      {
+        "letter": "b",
+        "text": "the branch has no counterpart on GitHub to compare with"
+      },
+      {
+        "letter": "c",
+        "text": "the branch has uncommitted changes"
+      },
+      {
+        "letter": "d",
+        "text": "origin only tracks main"
+      }
+    ],
+    "answer": "(b). A new local branch has never been pushed, so there is no origin/… to be up to date with. Sections 6.1, 6.5.",
+    "correct": "b"
+  },
+  {
+    "id": "6.SA10",
+    "chapter": 6,
+    "chapter_title": "Branches and Collaboration with Git",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "A graph shows a merge commit at the top joining Who starts (from origin/main) and Ignore temporary files (yours). Why did this pull need a merge commit when the previous pull was a fast-forward? Was anything lost?",
+    "answer": "Both sides had moved: the laptop and GitHub each had a commit the other lacked, so Git could not simply move forward. Nothing was lost; Git refused to let one side overwrite the other. Section 6.6."
+  },
+  {
+    "id": "6.SA11",
+    "chapter": 6,
+    "chapter_title": "Branches and Collaboration with Git",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "Two clones of the same repository sit on one laptop, ~/tictactoe and ~/tictactoe-lab. You commit in the first; the second shows no change. A teammate says “Git is broken, they’re the same repository.” What do you tell them, and what has to happen?",
+    "answer": "They are two separate local repositories that only meet on GitHub. The first must push and the second must pull. Section 6.5."
+  },
+  {
+    "id": "6.SA12",
+    "chapter": 6,
+    "chapter_title": "Branches and Collaboration with Git",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "A teammate proposes that everyone commit directly on main and pull often, “so main always has everyone’s latest work.” What would a classmate who clones the repository on a bad afternoon get, and what does working on a branch give you instead?",
+    "answer": "Whatever half-tested work was committed last. With a branch, main holds only the working version while new work is written and checked, and takes it in only once it works. Sections 6.3, 6.4."
+  },
+  {
+    "id": "7.MC4",
+    "chapter": 7,
+    "chapter_title": "Collaborating on GitHub",
+    "difficulty": "Easy",
+    "type": "MC",
+    "text": "In git push -u origin move-counter, what does -u do?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "uploads uncommitted changes too"
+      },
+      {
+        "letter": "b",
+        "text": "makes Git remember the pairing, so a plain git push works later on this branch"
+      },
+      {
+        "letter": "c",
+        "text": "updates main as well"
+      },
+      {
+        "letter": "d",
+        "text": "forces the push"
+      }
+    ],
+    "answer": "(b). Section 7.1.",
+    "correct": "b"
+  },
+  {
+    "id": "7.SA3",
+    "chapter": 7,
+    "chapter_title": "Collaborating on GitHub",
+    "difficulty": "Easy",
+    "type": "SA",
+    "text": "Can you approve your own pull request on GitHub?",
+    "answer": "No; approval must come from someone else. Section 7.2."
+  },
+  {
+    "id": "7.SA1",
+    "chapter": 7,
+    "chapter_title": "Collaborating on GitHub",
+    "difficulty": "Easy",
+    "type": "SA",
+    "text": "List three questions a reviewer should ask of a pull request.",
+    "answer": "Does it do what the title says, and only that? Was it checked? Does the team want it? Section 7.2."
+  },
+  {
+    "id": "7.MC6",
+    "chapter": 7,
+    "chapter_title": "Collaborating on GitHub",
+    "difficulty": "Medium",
+    "type": "MC",
+    "text": "Your pull request was merged on GitHub. Your laptop’s main does not have the change yet. Which command brings it down?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "git merge"
+      },
+      {
+        "letter": "b",
+        "text": "git push"
+      },
+      {
+        "letter": "c",
+        "text": "git pull"
+      },
+      {
+        "letter": "d",
+        "text": "git switch main alone"
+      }
+    ],
+    "answer": "(c). Section 7.3.",
+    "correct": "c"
+  },
+  {
+    "id": "7.SA4",
+    "chapter": 7,
+    "chapter_title": "Collaborating on GitHub",
+    "difficulty": "Medium",
+    "type": "SA",
+    "text": "A teammate pushes a branch dark-mode and says “dark mode is in.” On main, after git pull, no commit mentions dark mode. What is still missing?",
+    "answer": "A pull request for the branch, and its merge into main. A pushed branch is not in main. Sections 7.1, 7.3."
+  },
+  {
+    "id": "7.SA5",
+    "chapter": 7,
+    "chapter_title": "Collaborating on GitHub",
+    "difficulty": "Medium",
+    "type": "SA",
+    "text": "A reviewer asks three questions of a pull request: does it do what the title says, and only that; was it checked; does the team want it. A pull request’s description is empty: “the diff shows everything.” Which of the three questions can the diff answer, and which can it not?",
+    "answer": "The diff shows what changed (the first question). It cannot say how the change was checked, or whether the team wants it. Section 7.2."
+  },
+  {
+    "id": "7.SA6",
+    "chapter": 7,
+    "chapter_title": "Collaborating on GitHub",
+    "difficulty": "Medium",
+    "type": "SA",
+    "text": "What does a good review comment contain?",
+    "answer": "It points to one line, says what is wrong, and suggests what to do. Section 7.2."
+  },
+  {
+    "id": "7.MC7",
+    "chapter": 7,
+    "chapter_title": "Collaborating on GitHub",
+    "difficulty": "Hard",
+    "type": "MC",
+    "text": "main is protected and your git push to it is rejected. Where is your commit now?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "lost"
+      },
+      {
+        "letter": "b",
+        "text": "still on your laptop, on main"
+      },
+      {
+        "letter": "c",
+        "text": "on GitHub, awaiting review"
+      },
+      {
+        "letter": "d",
+        "text": "reverted automatically"
+      }
+    ],
+    "answer": "(b). You move it to a branch and propose it from there. Section 7.6.",
+    "correct": "b"
+  },
+  {
+    "id": "7.SA8",
+    "chapter": 7,
+    "chapter_title": "Collaborating on GitHub",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "A teammate’s pull request has 40 changed files and the title “updates”. What do you write?",
+    "answer": "That it cannot be reviewed as is: ask for a title and description saying what it does and how it was checked, and for it to be split into pull requests that each do one thing. Section 7.2."
+  },
+  {
+    "id": "7.SA9",
+    "chapter": 7,
+    "chapter_title": "Collaborating on GitHub",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "An AI assistant reviewed a branch and said “I’d approve this as is.” What can that approval tell you, and what can it not?",
+    "answer": "It is a statement about the code (no bug found, the counter counts correctly). It cannot say whether the feature belongs on the page or where; that is a product decision only a person makes. Section 7.2."
+  },
+  {
+    "id": "7.SA10",
+    "chapter": 7,
+    "chapter_title": "Collaborating on GitHub",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "After resolving a conflict, git add rules.txt makes the status say All conflicts fixed but you are still merging. What is left to do, and what should you do before pushing?",
+    "answer": "git commit --no-edit to create the merge commit. Run the application first: two changes that each work alone can break when combined. Section 7.5."
+  },
+  {
+    "id": "7.SA11",
+    "chapter": 7,
+    "chapter_title": "Collaborating on GitHub",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "main is protected. The owner turns the rule off for a minute, pushes a one-line fix, and turns it back on. What has the team lost?",
+    "answer": "A change reached main that nobody but its author looked at, with no pull request recording why it was made or who agreed. The record now has a gap. Sections 7.3, 7.6."
+  },
+  {
+    "id": "7.SA12",
+    "chapter": 7,
+    "chapter_title": "Collaborating on GitHub",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "A branch protection rule requires one approval. Your only teammate is away, and a classmate suggests a second GitHub account to approve your own pull requests “so the record looks the same.” What is the rule for, and what would the record then show falsely?",
+    "answer": "The rule exists so that someone else inspects every change before it reaches main. The record would show a review that never happened. (Accept any answer that names the purpose and rejects the fake approval.) Sections 7.2, 7.6."
+  },
+  {
+    "id": "7.SA13",
+    "chapter": 7,
+    "chapter_title": "Collaborating on GitHub",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "A teammate approves and merges a pull request on Friday. On Monday it has broken the tally. The teammate says “it’s a one-line fix; just push it to main.” What should happen instead, and what record would otherwise be lost?",
+    "answer": "Fix it on a branch and propose it with a pull request, like any change; the fix is reviewed, and the pull request records what broke, what fixed it, and who agreed. Sections 7.1, 7.3."
+  },
+  {
+    "id": "7.MC8",
+    "chapter": 7,
+    "chapter_title": "Collaborating on GitHub",
+    "difficulty": "Extra hard",
+    "type": "MC",
+    "text": "Why does Git refuse to pick a winner in a conflict, even when one side’s change is obviously newer?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Git cannot read timestamps"
+      },
+      {
+        "letter": "b",
+        "text": "a merge that silently discarded a teammate’s work would be worse than no merge"
+      },
+      {
+        "letter": "c",
+        "text": "the newer change is always wrong"
+      },
+      {
+        "letter": "d",
+        "text": "GitHub requires a human approval first"
+      }
+    ],
+    "answer": "(b). Section 7.4.",
+    "correct": "b"
+  },
+  {
+    "id": "8.MC3",
+    "chapter": 8,
+    "chapter_title": "Python Packages and Virtual Environments",
+    "difficulty": "Easy",
+    "type": "MC",
+    "text": "PyPI is:",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Python’s package installer"
+      },
+      {
+        "letter": "b",
+        "text": "the public site most Python packages are distributed through"
+      },
+      {
+        "letter": "c",
+        "text": "a virtual environment"
+      },
+      {
+        "letter": "d",
+        "text": "a Python version"
+      }
+    ],
+    "answer": "(b). Section 8.1.",
+    "correct": "b"
+  },
+  {
+    "id": "8.MC5",
+    "chapter": 8,
+    "chapter_title": "Python Packages and Virtual Environments",
+    "difficulty": "Easy",
+    "type": "MC",
+    "text": "pip freeze > requirements.txt writes:",
+    "options": [
+      {
+        "letter": "a",
+        "text": "the packages the program imports"
+      },
+      {
+        "letter": "b",
+        "text": "every installed package in the active environment, with its exact version"
+      },
+      {
+        "letter": "c",
+        "text": "only the packages you typed pip install for"
+      },
+      {
+        "letter": "d",
+        "text": "the Python version"
+      }
+    ],
+    "answer": "(b). Section 8.4.",
+    "correct": "b"
+  },
+  {
+    "id": "8.SA3",
+    "chapter": 8,
+    "chapter_title": "Python Packages and Virtual Environments",
+    "difficulty": "Easy",
+    "type": "SA",
+    "text": "What does the (.venv) prefix at the start of the prompt tell you?",
+    "answer": "That the virtual environment is active in this terminal: python and pip now refer to the copies in .venv, and anything installed goes there. Section 8.2."
+  },
+  {
+    "id": "8.SA4",
+    "chapter": 8,
+    "chapter_title": "Python Packages and Virtual Environments",
+    "difficulty": "Easy",
+    "type": "SA",
+    "text": "Name the three commands that rebuild a project’s environment on a computer that has only the clone.",
+    "answer": "Create the environment (python3 -m venv .venv), activate it (source .venv/bin/activate), install from the recipe (pip install -r requirements.txt). Section 8.5."
+  },
+  {
+    "id": "8.SA2",
+    "chapter": 8,
+    "chapter_title": "Python Packages and Virtual Environments",
+    "difficulty": "Medium",
+    "type": "SA",
+    "text": "You ran pip install flask, and pip installed seven packages. Who chose the other six?",
+    "answer": "Flask’s authors, who declare the packages Flask depends on; you are trusting their choices too. Section 8.3."
+  },
+  {
+    "id": "8.SA5",
+    "chapter": 8,
+    "chapter_title": "Python Packages and Virtual Environments",
+    "difficulty": "Medium",
+    "type": "SA",
+    "text": "Why give every project its own virtual environment instead of installing packages into the laptop’s Python?",
+    "answer": "One shared Python serves every project; one project’s version of a package can break another’s, and nothing records which project needed what. Section 8.2."
+  },
+  {
+    "id": "8.SA6",
+    "chapter": 8,
+    "chapter_title": "Python Packages and Virtual Environments",
+    "difficulty": "Medium",
+    "type": "SA",
+    "text": "What does == in a line such as numpy==2.5.4 do, and why do you want it there?",
+    "answer": "It pins the package to the exact version you tested with, so another computer builds the same environment rather than a mix of versions. Section 8.4."
+  },
+  {
+    "id": "8.SA1",
+    "chapter": 8,
+    "chapter_title": "Python Packages and Virtual Environments",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "Give two reasons not to commit a .venv folder.",
+    "answer": "It is generated (it can be rebuilt from requirements.txt) and large, and it is specific to one computer and Python version. Sections 8.2, 8.5."
+  },
+  {
+    "id": "8.MC7",
+    "chapter": 8,
+    "chapter_title": "Python Packages and Virtual Environments",
+    "difficulty": "Hard",
+    "type": "MC",
+    "text": "You clone a project whose requirements.txt lists Flask and its dependencies but not numpy. pip install -r requirements.txt succeeds; running the program gives ModuleNotFoundError: No module named 'numpy'. Which is the most likely way the recipe ended up like this?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "pip removed the line"
+      },
+      {
+        "letter": "b",
+        "text": "pip freeze was run before numpy was installed, or in a different environment"
+      },
+      {
+        "letter": "c",
+        "text": "GitHub strips package names"
+      },
+      {
+        "letter": "d",
+        "text": "numpy is built into Python and should not be listed"
+      }
+    ],
+    "answer": "(b). The recipe records what was installed in the active environment at the moment it was written. Section 8.4.",
+    "correct": "b"
+  },
+  {
+    "id": "8.SA8",
+    "chapter": 8,
+    "chapter_title": "Python Packages and Virtual Environments",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "You are in ~/coffee-lab and which python prints /Users/student/coffee/.venv/bin/python. Which environment is active, and what should you have done?",
+    "answer": "The coffee project’s, not coffee-lab’s: the activation followed the terminal. Deactivate, or activate coffee-lab’s own .venv. Section 8.2."
+  },
+  {
+    "id": "8.SA9",
+    "chapter": 8,
+    "chapter_title": "Python Packages and Virtual Environments",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "On a Mac, after deactivate, which python prints python not found while which python3 prints a path under /Library/Frameworks/Python.framework. Explain both lines.",
+    "answer": "Outside an environment a Mac has no python command, only the laptop’s own python3; inside .venv, python exists and points into the project. Sections 8.2, 8.4."
+  },
+  {
+    "id": "8.SA10",
+    "chapter": 8,
+    "chapter_title": "Python Packages and Virtual Environments",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "A pull request adds import requests to the top of the program; the diff touches one file. What do you ask for before merging, and what breaks if you merge as is?",
+    "answer": "An updated requirements.txt in the same pull request. Otherwise every other computer (and the server) that rebuilds from the recipe fails with ModuleNotFoundError. Sections 8.4, 8.5."
+  },
+  {
+    "id": "8.SA11",
+    "chapter": 8,
+    "chapter_title": "Python Packages and Virtual Environments",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "A teammate rewrites requirements.txt without the == versions, “so everyone gets the latest bug fixes.” What is lost, in one sentence?",
+    "answer": "Reproducibility: each computer builds whatever versions exist on the day it installs, so “it works on my machine” returns. Section 8.4."
+  },
+  {
+    "id": "8.SA12",
+    "chapter": 8,
+    "chapter_title": "Python Packages and Virtual Environments",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "pip install -r requirements.txt on the lab computer stops with No matching distribution found for numpy==2.5.4. The same file worked on your laptop yesterday. What is most likely different about the lab computer, and what command do you run first?",
+    "answer": "Its Python version (or platform) is one for which that exact numpy version is not published. Run python3 --version first. Sections 8.1, 8.4."
+  },
+  {
+    "id": "9.MC4",
+    "chapter": 9,
+    "chapter_title": "Building Your First Flask Server",
+    "difficulty": "Easy",
+    "type": "MC",
+    "text": "127.0.0.1 is:",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Google’s server"
+      },
+      {
+        "letter": "b",
+        "text": "the address every computer uses to refer to itself"
+      },
+      {
+        "letter": "c",
+        "text": "Flask’s default port"
+      },
+      {
+        "letter": "d",
+        "text": "the address of GitHub"
+      }
+    ],
+    "answer": "(b). Section 9.2.",
+    "correct": "b"
+  },
+  {
+    "id": "9.MC5",
+    "chapter": 9,
+    "chapter_title": "Building Your First Flask Server",
+    "difficulty": "Easy",
+    "type": "MC",
+    "text": "A Flask server’s log line ends with 200. What does that status code mean?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "no such page"
+      },
+      {
+        "letter": "b",
+        "text": "the request was malformed"
+      },
+      {
+        "letter": "c",
+        "text": "here is your page"
+      },
+      {
+        "letter": "d",
+        "text": "the server crashed"
+      }
+    ],
+    "answer": "(c). Section 9.4.",
+    "correct": "c"
+  },
+  {
+    "id": "9.MC6",
+    "chapter": 9,
+    "chapter_title": "Building Your First Flask Server",
+    "difficulty": "Easy",
+    "type": "MC",
+    "text": "Which two folders of a Flask project must never go to GitHub?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "templates/ and .git/"
+      },
+      {
+        "letter": "b",
+        "text": ".venv/ and __pycache__/"
+      },
+      {
+        "letter": "c",
+        "text": "templates/ and .venv/"
+      },
+      {
+        "letter": "d",
+        "text": ".git/ and __pycache__/"
+      }
+    ],
+    "answer": "(b). Both are generated and specific to this computer. Section 9.8.",
+    "correct": "b"
+  },
+  {
+    "id": "9.SA3",
+    "chapter": 9,
+    "chapter_title": "Building Your First Flask Server",
+    "difficulty": "Easy",
+    "type": "SA",
+    "text": "In a Flask project, which folder holds the HTML with gaps, and what fills the gaps?",
+    "answer": "templates/; the server fills them (via render_template) before sending plain HTML. Section 9.7."
+  },
+  {
+    "id": "9.SA2",
+    "chapter": 9,
+    "chapter_title": "Building Your First Flask Server",
+    "difficulty": "Medium",
+    "type": "SA",
+    "text": "Flask will not start and the terminal says Address already in use. What is the most likely cause, and what do you check first?",
+    "answer": "Another server is already listening on port 5000, usually one started earlier and not stopped. Check the other terminal tabs and stop it with Control+C. (On a Mac, AirPlay Receiver can also hold the port.) Section 9.1."
+  },
+  {
+    "id": "9.SA4",
+    "chapter": 9,
+    "chapter_title": "Building Your First Flask Server",
+    "difficulty": "Medium",
+    "type": "SA",
+    "text": "The heading on a Flask page is misspelled, and separately the page shows the wrong temperature for the zip code typed. Which file do you open for each?",
+    "answer": "The wording is in templates/; the wrong result is in app.py. Section 9.7."
+  },
+  {
+    "id": "9.SA6",
+    "chapter": 9,
+    "chapter_title": "Building Your First Flask Server",
+    "difficulty": "Medium",
+    "type": "SA",
+    "text": "Why does __pycache__/ belong in .gitignore?",
+    "answer": "Python generates it (prepared copies of the program) and rebuilds it whenever needed; it was written by no person and differs between Python versions. Sections 9.1, 9.8."
+  },
+  {
+    "id": "9.SA1",
+    "chapter": 9,
+    "chapter_title": "Building Your First Flask Server",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "A page calls an outside weather service every time it loads. 1,000 people open it in the same minute. How many requests does the weather service receive from your server, and why might that be a problem?",
+    "answer": "1,000. The service may limit or refuse that many requests from one source, and the visitors then see an error. Section 9.2."
+  },
+  {
+    "id": "9.SA7",
+    "chapter": 9,
+    "chapter_title": "Building Your First Flask Server",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "A Flask weather server first checks that the zip code typed is five digits, then asks an outside zip-code service where that zip is. Its terminal shows: \"GET /zip?zip=1234 HTTP/1.1\" 400 - \"GET /zip?zip=99999 HTTP/1.1\" 404 - \"GET /zip?zip=94305 HTTP/1.1\" 200 - Which line came from a lookup that failed at the zip-code service, and which never reached it?",
+    "answer": "99999 (404: the service said no such zip). 1234 was rejected by the server as malformed (400) before any lookup. Section 9.4."
+  },
+  {
+    "id": "9.SA8",
+    "chapter": 9,
+    "chapter_title": "Building Your First Flask Server",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "An AI assistant added one line to requirements.txt: +matplotlib, with no version, as git diff shows. After pip install -r requirements.txt and pip freeze > requirements.txt, the diff shows ten added lines, each with ==. Explain both numbers.",
+    "answer": "The assistant added one unpinned name; pip freeze records every package actually installed, including matplotlib’s dependencies, each at its exact version. Section 9.5; chapter 8."
+  },
+  {
+    "id": "9.SA9",
+    "chapter": 9,
+    "chapter_title": "Building Your First Flask Server",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "A Flask page shows a chart. Its source contains <img src=\"data:image/png;base64,…\">, one very long line, and no <script>. Who drew the chart, and what did the browser do?",
+    "answer": "The server (with a Python library such as matplotlib), as a finished image written out as text inside the page. The browser only displayed it. Section 9.5."
+  },
+  {
+    "id": "9.SA10",
+    "chapter": 9,
+    "chapter_title": "Building Your First Flask Server",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "You clone a classmate’s Flask project and ls -a shows .git, README.md, app.py, and templates, nothing else. Name two files that are missing and say which of the two stops you from running the project.",
+    "answer": "requirements.txt (the recipe; without it you cannot rebuild the environment) and .gitignore. The missing recipe is what prevents running. Section 9.7."
+  },
+  {
+    "id": "9.MC9",
+    "chapter": 9,
+    "chapter_title": "Building Your First Flask Server",
+    "difficulty": "Extra hard",
+    "type": "MC",
+    "text": "git status --ignored lists .venv/ and __pycache__/. A teammate says: “then git add . is dangerous; it will commit them.” Are they right?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "yes; git add . adds everything"
+      },
+      {
+        "letter": "b",
+        "text": "no; ignored files are skipped by git add, which is the point of .gitignore"
+      },
+      {
+        "letter": "c",
+        "text": "yes, unless the server is stopped"
+      },
+      {
+        "letter": "d",
+        "text": "only .venv/ would be added"
+      }
+    ],
+    "answer": "(b). Section 9.8.",
+    "correct": "b"
+  },
+  {
+    "id": "9.SA11",
+    "chapter": 9,
+    "chapter_title": "Building Your First Flask Server",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "Compare a tic-tac-toe game that is a single HTML file opened from the disk with a Flask weather page, on three points: what the page source contains, who does the work, and what must be running.",
+    "answer": "Game: source is the whole program; the browser does the work; nothing needs to run. Weather: source is only the result; the server does the work; the server must be running all the time. Section 9.6."
+  },
+  {
+    "id": "9.SA12",
+    "chapter": 9,
+    "chapter_title": "Building Your First Flask Server",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "Three kinds of files belong in .gitignore. Name the three kinds, and for each give one example from a Flask project.",
+    "answer": "Generated (__pycache__/), specific to this computer (.venv/), secret (.env; also a database file holding users). Section 9.8."
+  },
+  {
+    "id": "9.SA13",
+    "chapter": 9,
+    "chapter_title": "Building Your First Flask Server",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "A Flask page runs a fresh simulation of a coffee shop’s morning on every visit and shows the result. A colleague proposes running the simulation once a day, saving the result as a file, and publishing it as a static site “so no server has to run.” What does the page lose and what does it gain?",
+    "answer": "It loses the ability to run a new simulation per visit (the server did the work on request); it gains that nothing has to be kept running. Whether that is acceptable depends on whether a new morning per visit is the point. Section 9.6."
+  },
+  {
+    "id": "10.MC4",
+    "chapter": 10,
+    "chapter_title": "How Web Requests Work",
+    "difficulty": "Easy",
+    "type": "MC",
+    "text": "Which four-word rule says when a request should be GET and when POST?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "GET sends; POST receives"
+      },
+      {
+        "letter": "b",
+        "text": "GET shows; POST changes"
+      },
+      {
+        "letter": "c",
+        "text": "GET is safe; POST is slow"
+      },
+      {
+        "letter": "d",
+        "text": "GET hides; POST shows"
+      }
+    ],
+    "answer": "(b). Section 10.2.",
+    "correct": "b"
+  },
+  {
+    "id": "10.MC5",
+    "chapter": 10,
+    "chapter_title": "How Web Requests Work",
+    "difficulty": "Easy",
+    "type": "MC",
+    "text": "Where is a cookie stored?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "on the server"
+      },
+      {
+        "letter": "b",
+        "text": "in the browser"
+      },
+      {
+        "letter": "c",
+        "text": "in app.py"
+      },
+      {
+        "letter": "d",
+        "text": "in the URL"
+      }
+    ],
+    "answer": "(b). The server reads what the browser brings back. Section 10.3.",
+    "correct": "b"
+  },
+  {
+    "id": "10.SA3",
+    "chapter": 10,
+    "chapter_title": "How Web Requests Work",
+    "difficulty": "Easy",
+    "type": "SA",
+    "text": "Which part of a URL does Flask’s @app.route line match?",
+    "answer": "The path. Section 10.1."
+  },
+  {
+    "id": "10.SA4",
+    "chapter": 10,
+    "chapter_title": "How Web Requests Work",
+    "difficulty": "Easy",
+    "type": "SA",
+    "text": "In a query such as ?q=weather&hl=en, what does the & do?",
+    "answer": "Joins several name=value pairs. Section 10.1."
+  },
+  {
+    "id": "10.SA6",
+    "chapter": 10,
+    "chapter_title": "How Web Requests Work",
+    "difficulty": "Medium",
+    "type": "SA",
+    "text": "Why is a query (the part of a URL after ?) never used for a password? Name three places where a query is visible.",
+    "answer": "The address bar, the browser’s history, and the server’s log, which records every address in full. Section 10.1."
+  },
+  {
+    "id": "10.SA7",
+    "chapter": 10,
+    "chapter_title": "How Web Requests Work",
+    "difficulty": "Medium",
+    "type": "SA",
+    "text": "A Flask route that changes something on the server reads its data from request.form. What does a route that only shows something read, and from which part of the URL does that come?",
+    "answer": "request.args, the query. Section 10.2."
+  },
+  {
+    "id": "10.MC7",
+    "chapter": 10,
+    "chapter_title": "How Web Requests Work",
+    "difficulty": "Medium",
+    "type": "MC",
+    "text": "A Flask server is running on port 5000 and a visitor opens http://127.0.0.1/zip. The connection is refused. Which port did the browser try?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "5000"
+      },
+      {
+        "letter": "b",
+        "text": "80"
+      },
+      {
+        "letter": "c",
+        "text": "443"
+      },
+      {
+        "letter": "d",
+        "text": "none; the address is invalid"
+      }
+    ],
+    "answer": "(b). With no port written, http means 80, where nothing is listening. Section 10.1.",
+    "correct": "b"
+  },
+  {
+    "id": "10.SA1",
+    "chapter": 10,
+    "chapter_title": "How Web Requests Work",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "A photo app deletes a photo when someone opens /delete?photo=7. Name one way the photo could be deleted without anyone clicking a button.",
+    "answer": "Any program that opens links: a browser prefetching the page, a search crawler, or an email virus scanner. Section 10.2."
+  },
+  {
+    "id": "10.SA2",
+    "chapter": 10,
+    "chapter_title": "How Web Requests Work",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "A site remembers that a visitor has paid by setting a cookie paid=yes. Why is that unsafe?",
+    "answer": "The cookie is kept in the visitor’s browser, and the visitor can create or edit it. Section 10.3."
+  },
+  {
+    "id": "10.SA8",
+    "chapter": 10,
+    "chapter_title": "How Web Requests Work",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "A Flask server has a route /report that accepts only POST. Its terminal shows: \"POST /report HTTP/1.1\" 200 - \"POST /report HTTP/1.1\" 200 - \"GET /report HTTP/1.1\" 405 - The first line is a visitor sending a report. What happened in the second and third?",
+    "answer": "The second is the same visitor reloading and agreeing to resend, so the report was saved twice. The third is someone typing /report into the address bar: a GET on a POST-only route, refused. Section 10.2."
+  },
+  {
+    "id": "10.SA9",
+    "chapter": 10,
+    "chapter_title": "How Web Requests Work",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "A weather site remembers the last zip code a visitor looked up in a cookie last_zip. In the developer tools, a visitor changes it from 95053 to hello and reloads. What should a well-built server do with it, and how should a server regard any cookie?",
+    "answer": "Ignore it (use it only if it looks like a zip code). A cookie is data received from a stranger. Section 10.3."
+  },
+  {
+    "id": "10.SA10",
+    "chapter": 10,
+    "chapter_title": "How Web Requests Work",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "Two people share one laptop and one browser. One looks up zip code 94305 on a weather site that remembers the last zip in a cookie; an hour later the other opens the zip page and finds 94305 in the box. Is that a bug?",
+    "answer": "No. A cookie belongs to one browser on one computer, and to whoever is using it; the server cannot tell the two people apart. Section 10.3."
+  },
+  {
+    "id": "10.SA11",
+    "chapter": 10,
+    "chapter_title": "How Web Requests Work",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "app.py has @app.route(\"/login\", methods=[\"GET\", \"POST\"]) while /report has methods=[\"POST\"] alone. A teammate says the login route is a bug because signing in must be POST only. Are they right?",
+    "answer": "No. GET shows the login form; POST signs in. /report needs no GET because the form that sends to it lives on another page. Section 10.2."
+  },
+  {
+    "id": "10.SA12",
+    "chapter": 10,
+    "chapter_title": "How Web Requests Work",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "A weather site has a form where the visitor types a zip code; the form uses method=\"get\" and the route reads the zip from request.args. A teammate changes the form to method=\"post\". What else must change in app.py, and what happens to a link such as /zip?zip=94305 that someone bookmarked last week?",
+    "answer": "The /zip route must accept POST and read the zip from request.form instead of request.args. The bookmark no longer produces a result, since the data is no longer in the address. (Looking up weather changes nothing, so GET was the right choice to begin with.) Section 10.2."
+  },
+  {
+    "id": "10.MC9",
+    "chapter": 10,
+    "chapter_title": "How Web Requests Work",
+    "difficulty": "Extra hard",
+    "type": "MC",
+    "text": "A route that deletes an order reads the order number from request.args. What is the bug?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "nothing; it works"
+      },
+      {
+        "letter": "b",
+        "text": "a change should be a POST reading request.form, not a GET reading the query"
+      },
+      {
+        "letter": "c",
+        "text": "it should read a cookie instead"
+      },
+      {
+        "letter": "d",
+        "text": "the route needs https"
+      }
+    ],
+    "answer": "(b). A GET that deletes is a bug however well it works when you try it. Section 10.2.",
+    "correct": "b"
+  },
+  {
+    "id": "10.SA14",
+    "chapter": 10,
+    "chapter_title": "How Web Requests Work",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "An order page’s address is https://shop.example.com/orders?customer=1042&email=ana@example. and support staff like pasting it into emails. What is wrong with it, and what must the server know for a safer address such as /orders to work?",
+    "answer": "Anyone who edits the query can see any customer’s orders, and the query is in logs and history. For /orders alone to work, the server must know who is asking: a cookie that identifies the logged-in user. Sections 10.1, 10.3."
+  },
+  {
+    "id": "11.MC3",
+    "chapter": 11,
+    "chapter_title": "Adding Accounts and a Database",
+    "difficulty": "Easy",
+    "type": "MC",
+    "text": "SQLite stores all of an application’s data in:",
+    "options": [
+      {
+        "letter": "a",
+        "text": "a separate database server"
+      },
+      {
+        "letter": "b",
+        "text": "a single file in the project folder"
+      },
+      {
+        "letter": "c",
+        "text": "the browser"
+      },
+      {
+        "letter": "d",
+        "text": "app.py"
+      }
+    ],
+    "answer": "(b). Section 11.1.",
+    "correct": "b"
+  },
+  {
+    "id": "11.MC4",
+    "chapter": 11,
+    "chapter_title": "Adding Accounts and a Database",
+    "difficulty": "Easy",
+    "type": "MC",
+    "text": "What is the name of the cookie Flask uses to keep a user logged in?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "last_zip"
+      },
+      {
+        "letter": "b",
+        "text": "user"
+      },
+      {
+        "letter": "c",
+        "text": "session"
+      },
+      {
+        "letter": "d",
+        "text": "password_hash"
+      }
+    ],
+    "answer": "(c). Section 11.2.",
+    "correct": "c"
+  },
+  {
+    "id": "11.MC5",
+    "chapter": 11,
+    "chapter_title": "Adding Accounts and a Database",
+    "difficulty": "Easy",
+    "type": "MC",
+    "text": "A Flask sign-up app keeps its users, their password hashes, and their bookings in a SQLite file signup.db. Which line belongs in .gitignore, and why?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "app.py, because it holds the secret key"
+      },
+      {
+        "letter": "b",
+        "text": "signup.db, because it holds every user and password hash"
+      },
+      {
+        "letter": "c",
+        "text": "templates/, because HTML is generated"
+      },
+      {
+        "letter": "d",
+        "text": "requirements.txt, because it is specific to this computer"
+      }
+    ],
+    "answer": "(b). A database is generated, specific to this computer, and secret. Section 11.4.",
+    "correct": "b"
+  },
+  {
+    "id": "11.SA3",
+    "chapter": 11,
+    "chapter_title": "Adding Accounts and a Database",
+    "difficulty": "Easy",
+    "type": "SA",
+    "text": "Why can a well-built site help you reset a forgotten password but not email you the old one?",
+    "answer": "It never stored the password, only a hash computed from it, which cannot be run in reverse. Section 11.3."
+  },
+  {
+    "id": "11.SA1",
+    "chapter": 11,
+    "chapter_title": "Adding Accounts and a Database",
+    "difficulty": "Medium",
+    "type": "SA",
+    "text": "After a booking form is submitted with POST, the server answers with a redirect to the page that shows the bookings instead of with that page itself. Why?",
+    "answer": "So that reloading repeats a GET of the page, not the POST, and the booking is not submitted twice. Section 11.5."
+  },
+  {
+    "id": "11.SA6",
+    "chapter": 11,
+    "chapter_title": "Adding Accounts and a Database",
+    "difficulty": "Medium",
+    "type": "SA",
+    "text": "A Flask app keeps logins in a signed session cookie. What does the Log out button actually do, on the browser’s side and on the server’s side?",
+    "answer": "It tells the browser to throw its cookie away. The server keeps no list of who is logged in, so it has nothing to discard. Section 11.2."
+  },
+  {
+    "id": "11.MC7",
+    "chapter": 11,
+    "chapter_title": "Adding Accounts and a Database",
+    "difficulty": "Hard",
+    "type": "MC",
+    "text": "A Flask app keeps logins in a signed session cookie. Someone copies ana’s cookie. Ana then logs out. Can the copy still be used?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "no; logging out invalidates it"
+      },
+      {
+        "letter": "b",
+        "text": "yes; the server keeps no record of logins, so the copy stays valid"
+      },
+      {
+        "letter": "c",
+        "text": "only until the server restarts"
+      },
+      {
+        "letter": "d",
+        "text": "only from the same laptop"
+      }
+    ],
+    "answer": "(b). This is why the cookie must never travel where it can be copied; HTTPS protects it in transit. Section 11.2.",
+    "correct": "b"
+  },
+  {
+    "id": "11.SA7",
+    "chapter": 11,
+    "chapter_title": "Adding Accounts and a Database",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "A sign-up app: users register with a password, log in, and book time slots. Users and bookings are in a SQLite file signup.db; Flask keeps logins in a signed session cookie; the secret key that signs it is written in app.py, and app.py is on GitHub. For each fact, say where it is kept: ana’s password hash; that ana is logged in right now; that Thursday at 3:00 is taken; the secret key. Which of the four is on GitHub, and should it be?",
+    "answer": "signup.db; the browser (session cookie); signup.db; app.py. The secret key is on GitHub, and it should not be. Sections 11.2, 11.6."
+  },
+  {
+    "id": "11.MC8",
+    "chapter": 11,
+    "chapter_title": "Adding Accounts and a Database",
+    "difficulty": "Hard",
+    "type": "MC",
+    "text": "A bookings table stores user_id, not the username. Ana renames her account. What happens to her booking row?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "it is deleted"
+      },
+      {
+        "letter": "b",
+        "text": "it must be updated by hand"
+      },
+      {
+        "letter": "c",
+        "text": "nothing; it still refers to the same user"
+      },
+      {
+        "letter": "d",
+        "text": "it now shows as taken by nobody"
+      }
+    ],
+    "answer": "(c). The ID links the tables, so each fact is kept in one place. Section 11.6.",
+    "correct": "c"
+  },
+  {
+    "id": "11.SA8",
+    "chapter": 11,
+    "chapter_title": "Adding Accounts and a Database",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "In your Flask app, deleting the session cookie logs you out, but restarting the server does not. A teammate’s app, built from a similar prompt, logs everyone out at every restart. What must be different about their secret key?",
+    "answer": "Theirs is generated anew each start (a random value), so old signatures no longer match; yours is a fixed string. Section 11.2."
+  },
+  {
+    "id": "11.SA9",
+    "chapter": 11,
+    "chapter_title": "Adding Accounts and a Database",
+    "difficulty": "Hard",
+    "type": "SA",
+    "text": "A weather app keeps the last zip code typed in a plain cookie last_zip, which the server accepts if it looks like a zip code. A sign-up app keeps the logged-in user’s ID in a signed cookie. Why does the second need a signature when the first does not?",
+    "answer": "The session cookie makes a far more serious claim, I am this user, so the server must be able to detect tampering; a wrong zip code costs nothing. Section 11.2."
+  },
+  {
+    "id": "11.SA10",
+    "chapter": 11,
+    "chapter_title": "Adding Accounts and a Database",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "Two students click Book on the same slot in the same second. Where is it decided who gets it: in the page, in the route, or in the table?",
+    "answer": "In the table: a constraint refuses a second row for the same slot. Section 11.5."
+  },
+  {
+    "id": "11.SA11",
+    "chapter": 11,
+    "chapter_title": "Adding Accounts and a Database",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "Ben constructs a cancel request by hand for ana’s slot, bypassing the page. Why is hiding the Cancel button not enough, and what must the server do?",
+    "answer": "The page is only what the browser was sent; the request can be made without it. The server must check, on every request, that the booking belongs to the person asking before deleting the row. Section 11.5."
+  },
+  {
+    "id": "11.SA12",
+    "chapter": 11,
+    "chapter_title": "Adding Accounts and a Database",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "app.py contains app.config[\"SECRET_KEY\"] = \"dev-change-me\" and is on GitHub. What can anyone who reads the repository do?",
+    "answer": "Produce a valid signature for any user_id, and so present a cookie that says they are any user, including the administrator, without a password. Section 11.2."
+  },
+  {
+    "id": "11.SA13",
+    "chapter": 11,
+    "chapter_title": "Adding Accounts and a Database",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "With the server stopped, you delete signup.db and start it again; the app creates a new, empty database. Ana’s browser still holds a validly signed session cookie saying user_id 1. Is the signature still valid? Is ana still a user?",
+    "answer": "The signature is valid (same key). But the new database has no row 1, so the server cannot find a user for it; the page cannot show Logged in as ana, because the name comes from the table. Sections 11.2, 11.3."
+  },
+  {
+    "id": "11.SA14",
+    "chapter": 11,
+    "chapter_title": "Adding Accounts and a Database",
+    "difficulty": "Extra hard",
+    "type": "SA",
+    "text": "A sign-up app’s rule: “the first user who registered is the administrator.” Why is that fine on your laptop and wrong for a public site?",
+    "answer": "On your laptop the first registrant is you; on a public address it is whoever reaches the register page first, and if the database is recreated empty at every redeploy, the race reopens each time. Sections 11.5, 12.7."
+  }
+]

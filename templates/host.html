@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+{% block title %}Host · {{ code }}{% endblock %}
+{% block subtitle %}host{% endblock %}
+{% block head %}
+<style>
+  .join-strip { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .join-strip .code-big { font-family: var(--mono); font-size: 1.5rem; font-weight: 500; letter-spacing: .2em;
+                          padding: 4px 14px; border-radius: 10px; background: var(--accent-soft); color: var(--accent); }
+  .join-strip .url { font-family: var(--mono); font-size: .9rem; color: var(--ink-2); word-break: break-all; }
+  .layout { display: grid; grid-template-columns: 1fr 300px; gap: 20px; align-items: start; }
+  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+  .stage { min-height: 380px; padding: 30px 34px; }
+  .side .card { padding: 18px 20px; margin-bottom: 16px; }
+  .stat { display: flex; justify-content: space-between; align-items: baseline; padding: 8px 0; border-bottom: 1px solid var(--line); }
+  .stat:last-child { border-bottom: 0; }
+  .stat b { font-size: 1.4rem; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .filters label { display: flex; gap: 8px; align-items: center; font-size: .92rem; padding: 4px 0; cursor: pointer; }
+  .filters input { accent-color: var(--accent); width: 16px; height: 16px; }
+  .filters .group { margin-top: 10px; }
+  .filters .group:first-child { margin-top: 0; }
+  .toolbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; background: var(--card); border-top: 1px solid var(--line);
+             box-shadow: 0 -6px 24px -12px rgba(0,0,0,.25); }
+  .toolbar .inner { max-width: 1100px; margin: 0 auto; padding: 12px 20px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .toolbar .status { margin-left: auto; color: var(--muted); font-size: .9rem; font-variant-numeric: tabular-nums; }
+  #qr { display: none; margin-top: 14px; text-align: center; }
+  #qr img, #qr canvas { display: inline-block; padding: 10px; background: #fff; border-radius: 12px; }
+  .sa-head { display: flex; justify-content: space-between; align-items: baseline; margin-top: 8px; }
+</style>
+{% endblock %}
+{% block topbar %}
+  <span class="pill" id="live"><span class="dot live"></span><span id="live-n">0</span> answered</span>
+{% endblock %}
+{% block body %}
+<div class="card" style="margin-bottom:20px">
+  <div class="join-strip">
+    <div>
+      <div class="eyebrow">Students join at</div>
+      <div class="url"><a href="{{ student_url }}" target="_blank">{{ student_url }}</a></div>
+    </div>
+    <span class="spacer"></span>
+    <div style="display:flex; align-items:center; gap:10px">
+      <span class="muted small">code</span>
+      <span class="code-big">{{ code }}</span>
+    </div>
+    <button id="copy">Copy link</button>
+    <button id="qr-btn">QR code</button>
+  </div>
+  <div id="qr"></div>
+</div>
+
+<div class="layout">
+  <div class="card stage" id="qcard">
+    <div class="empty"><div class="glyph">?</div>Press <b>Next question</b> to draw the first problem.</div>
+  </div>
+
+  <aside class="side">
+    <div class="card">
+      <div class="eyebrow" style="margin-bottom:6px">This session</div>
+      <div class="stat"><span>Questions shown</span><b id="s-asked">0</b></div>
+      <div class="stat"><span>Left in pool</span><b id="s-left">0</b></div>
+      <div class="stat"><span>Answers now</span><b id="s-resp">0</b></div>
+    </div>
+    <div class="card filters">
+      <div class="eyebrow" style="margin-bottom:6px">Draw from</div>
+      <div class="group"><b class="small">Chapters</b>
+        <label><input type="checkbox" id="all-ch" checked> <i class="muted small">all</i></label>
+        {% for num, title in chapters %}
+          <label><input type="checkbox" class="f-chapter" value="{{ num }}" checked> {{ num }}. {{ title }}</label>
+        {% endfor %}
+      </div>
+      <div class="group"><b class="small">Difficulty</b>
+        {% for d in difficulties %}
+          <label><input type="checkbox" class="f-diff" value="{{ d }}" checked> {{ d }}</label>
+        {% endfor %}
+      </div>
+      <div class="group"><b class="small">Type</b>
+        <label><input type="checkbox" class="f-type" value="MC" checked> Multiple choice</label>
+        <label><input type="checkbox" class="f-type" value="SA" checked> Short answer</label>
+      </div>
+      <div class="group"><button id="apply" style="width:100%; justify-content:center">Apply filters</button>
+        <div class="muted small" id="poolinfo" style="margin-top:6px; text-align:center"></div></div>
+    </div>
+  </aside>
+</div>
+
+<div class="toolbar"><div class="inner">
+  <button class="primary lg" id="next">Next question <span class="kbd">N</span></button>
+  <button class="lg" id="responses">Show responses <span class="kbd">R</span></button>
+  <button class="lg" id="solution">Show solution <span class="kbd">S</span></button>
+  <span class="status" id="counter"></span>
+</div></div>
+{% endblock %}
+
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+const CODE = {{ code|tojson }}, KEY = {{ key|tojson }}, STUDENT_URL = {{ student_url|tojson }};
+const api = (path, body) => fetch(`/api/${CODE}/${path}`, {
+  method: body === undefined ? 'GET' : 'POST',
+  headers: {'Content-Type': 'application/json', 'X-Host-Key': KEY},
+  body: body === undefined ? undefined : JSON.stringify(body),
+}).then(r => r.json());
+const $ = id => document.getElementById(id);
+let state = null, lastPid = null;
+
+function render(s) {
+  state = s;
+  $('responses').classList.toggle('on', s.show_responses);
+  $('responses').innerHTML = (s.show_responses ? 'Hide' : 'Show') + ' responses <span class="kbd">R</span>';
+  $('solution').classList.toggle('on', s.show_solution);
+  $('solution').innerHTML = (s.show_solution ? 'Hide' : 'Show') + ' solution <span class="kbd">S</span>';
+  ['responses', 'solution'].forEach(id => $(id).disabled = !s.problem);
+  $('s-asked').textContent = s.asked; $('s-left').textContent = Math.max(0, s.pool - s.asked);
+  $('s-resp').textContent = s.responded; $('live-n').textContent = s.responded;
+  $('poolinfo').textContent = `${s.pool} problem${s.pool === 1 ? '' : 's'} match`;
+  $('counter').textContent = s.problem ? `Question ${s.asked} · ${s.responded} answered` : '';
+
+  const card = $('qcard');
+  if (!s.problem) { card.innerHTML = '<div class="empty"><div class="glyph">?</div>Press <b>Next question</b> to draw the first problem.</div>'; return; }
+  const p = s.problem, newQ = p.id !== lastPid; lastPid = p.id;
+  const correct = s.show_solution && s.solution ? s.solution.correct : null;
+  let html = `<div class="q-meta"><span class="pill accent code">${esc(p.id)}</span><span class="pill">Ch. ${p.chapter} · ${esc(p.chapter_title)}</span><span class="pill">${esc(p.difficulty)}</span><span class="pill">${p.type === 'MC' ? 'Multiple choice' : 'Short answer'}</span></div>`;
+  html += `<p class="q-text big">${esc(p.text)}</p>`;
+
+  if (p.type === 'MC') {
+    const counts = s.show_responses && s.stats ? s.stats.counts : null;
+    const total = counts ? Math.max(1, s.stats.total) : 1;
+    html += '<div class="options">';
+    for (const o of p.options) {
+      const n = counts ? (counts[o.letter] || 0) : 0, pct = Math.round(100 * n / total);
+      html += `<div class="option big${correct === o.letter ? ' correct' : ''}"><div class="fill" data-w="${counts ? pct : 0}"></div>` +
+              `<span class="letter">${o.letter}</span><span class="body">${esc(o.text)}</span>` +
+              (counts ? `<span class="count">${n} · ${pct}%</span>` : '') + `</div>`;
+    }
+    html += '</div>';
+  } else if (s.show_responses && s.stats) {
+    html += `<div class="sa-head"><span class="eyebrow">Responses</span><span class="muted small">${s.stats.total}</span></div>`;
+    html += s.stats.total ? '<ul class="answers">' + s.stats.answers.map(a => `<li>${esc(a)}</li>`).join('') + '</ul>'
+                          : '<p class="muted">No answers yet.</p>';
+  }
+  if (s.show_solution && s.solution) html += `<div class="solution fade-in"><div class="eyebrow">Solution</div>${esc(s.solution.answer)}</div>`;
+  card.innerHTML = html;
+  if (newQ) card.classList.remove('fade-in'), void card.offsetWidth, card.classList.add('fade-in');
+  requestAnimationFrame(() => card.querySelectorAll('.fill').forEach(f => f.style.width = f.dataset.w + '%'));
+}
+
+const next = () => api('next', {}).then(r => r.error ? toast(r.error) : render(r));
+const toggle = what => state && state.problem && api('toggle', {what}).then(render);
+$('next').onclick = next;
+$('responses').onclick = () => toggle('show_responses');
+$('solution').onclick = () => toggle('show_solution');
+document.addEventListener('keydown', e => {
+  if (e.target.matches('input, textarea') || e.metaKey || e.ctrlKey) return;
+  if (e.key === 'n' || e.key === 'ArrowRight') next();
+  if (e.key === 'r') toggle('show_responses');
+  if (e.key === 's') toggle('show_solution');
+});
+const vals = cls => [...document.querySelectorAll('.' + cls + ':checked')].map(e => e.value);
+$('apply').onclick = () => api('filters', {chapters: vals('f-chapter'), difficulties: vals('f-diff'), types: vals('f-type')})
+  .then(s => { render(s); toast(`${s.pool} problems in pool`); });
+$('all-ch').onchange = e => document.querySelectorAll('.f-chapter').forEach(c => c.checked = e.target.checked);
+document.querySelectorAll('.f-chapter').forEach(c => c.onchange = () => $('all-ch').checked = vals('f-chapter').length === document.querySelectorAll('.f-chapter').length);
+$('copy').onclick = () => navigator.clipboard.writeText(STUDENT_URL).then(() => toast('Link copied'));
+$('qr-btn').onclick = () => {
+  const box = $('qr');
+  if (box.style.display !== 'block') { box.style.display = 'block'; if (!box.hasChildNodes()) new QRCode(box, {text: STUDENT_URL, width: 240, height: 240}); }
+  else box.style.display = 'none';
+};
+const stateUrl = `state?key=${encodeURIComponent(KEY)}`;
+setInterval(() => api(stateUrl).then(s => { if (!state || s.version !== state.version) render(s); }).catch(() => {}), 2000);
+api(stateUrl).then(render);
+</script>
+{% endblock %}

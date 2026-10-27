@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block title %}Quiz · {{ code }}{% endblock %}
+{% block head %}
+<style>
+  main { max-width: 680px; padding-bottom: 40px; }
+  .card { padding: 22px 20px; }
+  .q-text { font-size: 1.3rem; }
+  .sa-actions { display: flex; gap: 10px; align-items: center; margin-top: 10px; flex-wrap: wrap; }
+  .hint { margin: 12px 0 0; }
+  .option .check { flex: none; width: 22px; height: 22px; border-radius: 50%; display: none; place-items: center;
+                   background: var(--accent); color: var(--accent-ink); font-size: .8rem; font-weight: 700; }
+  .option.selected .check { display: grid; }
+  .waiting .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); display: inline-block;
+                  animation: pulse 1.4s ease-in-out infinite; margin-right: 8px; vertical-align: middle; }
+</style>
+{% endblock %}
+{% block topbar %}<span class="pill">session <span class="code">{{ code }}</span></span>{% endblock %}
+{% block body %}
+<div class="card" id="qcard">
+  <div class="empty waiting"><div class="glyph">…</div><span class="dot"></span>Waiting for the instructor to show a question</div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+const CODE = {{ code|tojson }};
+let STUDENT_ID;
+try {
+  STUDENT_ID = localStorage.getItem('quiz-student-id');
+  if (!STUDENT_ID) { STUDENT_ID = crypto.randomUUID(); localStorage.setItem('quiz-student-id', STUDENT_ID); }
+} catch (e) { STUDENT_ID = crypto.randomUUID(); }
+
+let state = null, myAnswers = {}, lastPid = null;
+
+function submit(pid, answer) {
+  return fetch(`/api/${CODE}/answer`, {
+    method: 'POST', headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({student_id: STUDENT_ID, problem_id: pid, answer}),
+  }).then(r => r.json()).then(r => {
+    if (r.ok) { const first = !myAnswers[pid]; myAnswers[pid] = answer; render(state); toast(first ? 'Answer recorded' : 'Answer updated'); }
+    else toast(r.error || 'Could not submit');
+  }).catch(() => toast('Network error, try again'));
+}
+
+function render(s) {
+  state = s;
+  const card = document.getElementById('qcard');
+  if (!s.problem) { lastPid = null; card.innerHTML = '<div class="empty waiting"><div class="glyph">…</div><span class="dot"></span>Waiting for the instructor to show a question</div>'; return; }
+  const p = s.problem, mine = myAnswers[p.id], newQ = p.id !== lastPid; lastPid = p.id;
+  const correct = s.solution ? s.solution.correct : null;
+  let html = `<div class="q-meta"><span class="pill accent code">${esc(p.id)}</span><span class="pill">Ch. ${p.chapter}</span><span class="pill">${esc(p.difficulty)}</span></div>`;
+  html += `<p class="q-text">${esc(p.text)}</p>`;
+
+  if (p.type === 'MC') {
+    const counts = s.stats ? s.stats.counts : null, total = counts ? Math.max(1, s.stats.total) : 1;
+    html += '<div class="options">';
+    for (const o of p.options) {
+      const n = counts ? (counts[o.letter] || 0) : 0, pct = Math.round(100 * n / total);
+      const cls = ['option', mine === o.letter ? 'selected' : '', correct === o.letter ? 'correct' : ''].join(' ');
+      html += `<button class="${cls}" data-letter="${o.letter}"><div class="fill" data-w="${counts ? pct : 0}"></div>` +
+              `<span class="letter">${o.letter}</span><span class="body">${esc(o.text)}</span>` +
+              (counts ? `<span class="count">${n} · ${pct}%</span>` : `<span class="check">✓</span>`) + `</button>`;
+    }
+    html += '</div>';
+    html += `<p class="hint muted small">${mine ? `You chose <b>${mine}</b>. Tap another option to change it.` : 'Tap an option to answer.'}</p>`;
+  } else {
+    html += `<textarea id="sa" placeholder="Your answer, in a sentence or two">${mine ? esc(mine) : ''}</textarea>`;
+    html += `<div class="sa-actions"><button class="primary" id="send">${mine ? 'Update answer' : 'Submit answer'}</button>` +
+            (mine ? '<span class="pill ok"><span class="dot"></span>submitted</span>' : '') + '</div>';
+    if (s.stats) {
+      html += `<div class="eyebrow" style="margin-top:20px">Responses · ${s.stats.total}</div>`;
+      html += s.stats.total ? '<ul class="answers">' + s.stats.answers.map(a => `<li>${esc(a)}</li>`).join('') + '</ul>' : '<p class="muted">No answers yet.</p>';
+    }
+  }
+  if (s.solution) html += `<div class="solution fade-in"><div class="eyebrow">Solution</div>${esc(s.solution.answer)}</div>`;
+  card.innerHTML = html;
+  if (newQ) { card.classList.remove('fade-in'); void card.offsetWidth; card.classList.add('fade-in'); window.scrollTo({top: 0}); }
+  requestAnimationFrame(() => card.querySelectorAll('.fill').forEach(f => f.style.width = f.dataset.w + '%'));
+
+  card.querySelectorAll('button.option').forEach(b => b.onclick = () => submit(p.id, b.dataset.letter));
+  const send = document.getElementById('send');
+  if (send) send.onclick = () => { const v = document.getElementById('sa').value.trim(); if (v) submit(p.id, v); else toast('Type an answer first'); };
+}
+
+function poll() {
+  fetch(`/api/${CODE}/state`).then(r => r.json()).then(s => {
+    if (!state || s.version !== state.version) {
+      // Keep a half-typed short answer if only the response count changed.
+      const ta = document.getElementById('sa');
+      const same = state && state.problem && s.problem && state.problem.id === s.problem.id;
+      if (same && ta && document.activeElement === ta && s.show_responses === state.show_responses && s.show_solution === state.show_solution) { state = s; return; }
+      render(s);
+    }
+  }).catch(() => {});
+}
+setInterval(poll, 2000);
+poll();
+</script>
+{% endblock %}
